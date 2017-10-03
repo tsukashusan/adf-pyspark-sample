@@ -1,0 +1,24 @@
+{
+  "name": "MySparkOnDemandPipeline",
+  "properties": {
+    "activities": [
+      {
+        "name": "MySparkActivity",
+        "type": "HDInsightSpark",
+        "linkedServiceName": {
+            "referenceName": "MyOnDemandSparkLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "rootPath": "adftutorial/spark",
+          "entryFilePath": "script/WordCount_Spark.py",
+          "getDebugInfo": "Always",
+          "sparkJobLinkedService": {
+            "referenceName": "MyStorageLinkedService",
+            "type": "LinkedServiceReference"
+          }
+        }
+      }
+    ]
+  }
+}
