@@ -6,7 +6,7 @@
         "name": "MySparkActivity",
         "type": "HDInsightSpark",
         "linkedServiceName": {
-            "referenceName": "MyOnDemandSparkLinkedService",
+            "referenceName": "HDInsightLinkedService",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
