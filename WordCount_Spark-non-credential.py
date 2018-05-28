@@ -12,8 +12,6 @@ BLOB_PATH = "wasbs://<storageContainer>@<storageAccount>.blob.core.windows.net"
 APP_NAME = "PythonWordCount"
 INPUT_PATH = "%s/spark/inputfiles/minecraftstory.txt" % BLOB_PATH
 OUTPUT_PATH = "%s/spark/outputfiles/wordcount%s" % (BLOB_PATH, "%s")
-BLOB_KEY = "fs.azure.account.key.<storageAccount>.blob.core.windows.net"
-BLOB_SECRET = "<storageAccountkey>"
 
 
 def main():
@@ -21,8 +19,6 @@ def main():
     try:
         strdate = dt.now(pytz.timezone('Asia/Tokyo')).strftime('%Y%m%d%H%M%s')
         spark = SparkSession.builder.appName(APP_NAME).getOrCreate()
-        sc = spark.sparkContext
-        sc._jsc.hadoopConfiguration().set(BLOB_KEY, BLOB_SECRET)
         lines = spark.read.text(INPUT_PATH).rdd.map(lambda r: r[0])
         counts = lines.flatMap(lambda x: x.split(' ')).map(lambda x: (x, 1)).reduceByKey(add)
         filePath = OUTPUT_PATH % strdate

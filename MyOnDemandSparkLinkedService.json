@@ -1,26 +1,27 @@
 {
-    "name": "MyOnDemandSparkLinkedService",
-    "properties": {
-      "type": "HDInsightOnDemand",
-      "typeProperties": {
-        "clusterSize": 2,
-        "clusterType": "spark",
-        "timeToLive": "01:00:00",
-        "hostSubscriptionId": "<SubscriptionID>",
-        "servicePrincipalId": "<ServicePrincipalId>",
-        "servicePrincipalKey": {
-          "value": "<servicePrincipalKey>",
-          "type": "SecureString"
-        },
-        "tenant": "<TenantID>",
-        "clusterResourceGroup": "<ResourceGroup>",
-        "version": "3.6",
-        "osType": "Linux",
-        "clusterNamePrefix":"ADFSparkSample",
-        "linkedServiceName": {
-          "referenceName": "MyStorageLinkedService",
-          "type": "LinkedServiceReference"
-        }
+  "name": "MyOnDemandSparkLinkedService",
+  "properties": {
+    "type": "HDInsightOnDemand",
+    "typeProperties": {
+      "clusterSize": 2,
+      "clusterType": "spark",
+      "sparkVersion": "2.2",
+      "timeToLive": "01:00:00",
+      "hostSubscriptionId": "<hostSubscriptionId>",
+      "servicePrincipalId": "<applicatoinId",
+      "servicePrincipalKey": {
+        "value": "<password>",
+        "type": "SecureString"
+      },
+      "tenant": "<tenantId>",
+      "clusterResourceGroup": "<resourceGroupName>",
+      "version": "3.6",
+      "osType": "Linux",
+      "clusterNamePrefix":"ADFSparkSample",
+      "linkedServiceName": {
+        "referenceName": "MyStorageLinkedService",
+        "type": "LinkedServiceReference"
       }
     }
+  }
 }

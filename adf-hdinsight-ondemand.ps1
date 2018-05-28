@@ -1,8 +1,8 @@
 #Set variables one by one.
-$subscriptionID = "<subscriptionID>" # Your Azure subscription ID
-$resourceGroupName = "<resourceGroupName>" # Name of the resource group
-$dataFactoryName = "<dataFactoryName>" # Globally unique name of the data factory
-$pipelineName = "<pipelineName>" # Name of the pipeline
+$subscriptionID = "dc5d3c89-36dd-4a3c-b09b-e6ee41f6d5b5" # Your Azure subscription ID
+$resourceGroupName = "adfondemand20180523" # Name of the resource group
+$dataFactoryName = "adfondemand20180523" # Globally unique name of the data factory
+$pipelineName = "MyOnDemandSparkLinkedService" # Name of the pipeline
 $locations = @("eastus", "eastus2", "southeastasia", "japaneast", "japanwest")
 
 #Run the following command, and enter the user name and password that you use to sign in to the Azure portal:
@@ -17,7 +17,7 @@ Select-AzureRmSubscription -SubscriptionId $subscriptionID
 #Get-AzureRmLocation|select DisplayName, Location
 
 #Create the resource group: ADFTutorialResourceGroup.
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $locations[2]
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $locations[3]
 
 #Create the data factory.
 Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $locations[1] -Name $dataFactoryName
@@ -26,10 +26,10 @@ Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $locati
 Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
 
 #Run the following command to deploy an on-demand Spark linked service
-Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "HDInsightLinkedService" -File "HDInsightLinkedService.json"
+Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyOnDemandSparkLinkedService" -File "MyOnDemandSparkLinkedService.json"
 
 #Run the following command to deploy a pipeline:
-Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name $pipelineName -File "MySparkLinkPipeline.json"
+Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name $pipelineName -File "MySparkOnDemandPipeline.json"
 #Start and monitor a pipeline run
 #Start a pipeline run. It also captures the pipeline run ID for future monitoring.
 $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName

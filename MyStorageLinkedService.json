@@ -4,7 +4,7 @@
       "type": "AzureStorage",
       "typeProperties": {
         "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<AccountName>;AccountKey=<AccountKey>",
+          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccount>;AccountKey=<storageaccountkey>",
           "type": "SecureString"
         }
       }

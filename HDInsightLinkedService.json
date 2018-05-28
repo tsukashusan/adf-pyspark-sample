@@ -3,8 +3,8 @@
     "properties": {
       "type": "HDInsight",
       "typeProperties": {
-        "clusterUri": "https://<hdinsightclustername>.azurehdinsight.net/",
-        "userName": "<username>",
+        "clusterUri": "https://<clustername>.azurehdinsight.net/",
+        "userName": "<userName>",
         "password": {
             "value": "<password>",
             "type": "SecureString"
